@@ -1,12 +1,11 @@
-import { StackContext, Api } from "sst/constructs";
+import {StackContext, Api, NextjsSite} from "sst/constructs";
 
-export function API({ stack }: StackContext) {
-  const api = new Api(stack, "api", {
-    routes: {
-      "GET /": "packages/functions/src/lambda.handler",
-    },
+export function AwesomeStack({stack}: StackContext) {
+  let site = new NextjsSite(stack, "NextjsApp", {
+    path: "nextjs-app/",
   });
+
   stack.addOutputs({
-    ApiEndpoint: api.url,
+    URL: site.url!,
   });
 }
