@@ -6,6 +6,6 @@ export function AwesomeStack({stack}: StackContext) {
   });
 
   stack.addOutputs({
-    URL: site.url!,
+    URL: site.url || '',
   });
 }
